@@ -122,7 +122,7 @@ encrypt:
 deploy:
   type: git
   # repo: https://github.com/xuqssq/xuqssq.github.io.git
-  repo: git@github.com:xuqssq/xuqssq.github.io.git
+  repo: git@github.com:iosxx/ai-blog
   branch: main
 # 搜索插件
 search:
