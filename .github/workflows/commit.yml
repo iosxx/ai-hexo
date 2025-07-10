@@ -3,7 +3,6 @@ name: autocommit-robot
 on:
   schedule:
     - cron: "0 * * * *"
-
   workflow_dispatch:
 
 jobs:
@@ -47,52 +46,52 @@ jobs:
         id: commit-message
         run: |
           EMOJIS=(
-              "🤖" "💻" "⌨️" "🖥️" "🖲️" "🎮" "🕹️" "📱" "☎️" "⌚️" "⚡️" "💡" "🔌" "🔋"
-              "🎨" "🎭" "🎪" "🎠" "🎬" "📸" "🎥" "🎙️" "🎧" "🎹" "🎼" "🎵" "🎶" "🖼️"
-              "✨" "💫" "🌟" "⭐️" "✴️" "🔮" "🪄" "🎇" "🎆" "🌠" "🌌" "👾" "🛸" "🌍"
-              "🔧" "🔨" "⚒️" "🛠️" "⚙️" "🔩" "⛓️" "📐" "📏" "✂️" "🗜️" "📌" "🔍" "💎"
-              "🎯" "🎪" "🏆" "🏅" "🎖️" "🔝" "📈" "💯" "🎳" "🎲" "🎱" "🧩" "♟️" "🎰"
-              "🚀" "✈️" "🛩️" "🛰️" "🌈" "🌊" "💨" "🌪️" "⚡️" "🔥" "💥" "🎢" "🎡" "🎪"
-              "💡" "💭" "💫" "🧠" "🎉" "🎊" "🌟" "💪" "📚" "🔬" "🧪" "🧬" "🔭" "⚗️"
-              "👽" "🤖" "👾" "🛸" "🌌" "🌠" "🚀" "💫" "✨" "🔮" "🎆" "🎇" "⭐️" "🌟"
-              "🏗️" "🏢" "🏭" "🏛️" "🏘️" "🏰" "🗼" "🗽" "🗿" "🎪" "🌉" "🌇" "🌆" "🌃"
-              "📡" "📱" "📟" "📠" "🔌" "🔋" "💻" "🖥️" "⌨️" "🖱️" "🖨️" "🖲️" "📼" "💽"
+            "🤖" "💻" "⌨️" "🖥️" "🖲️" "🎮" "🕹️" "📱" "☎️" "⌚️" "⚡️" "💡" "🔌" "🔋"
+            "🎨" "🎭" "🎪" "🎠" "🎬" "📸" "🎥" "🎙️" "🎧" "🎹" "🎼" "🎵" "🎶" "🖼️"
+            "✨" "💫" "🌟" "⭐️" "✴️" "🔮" "🪄" "🎇" "🎆" "🌠" "🌌" "👾" "🛸" "🌍"
+            "🔧" "🔨" "⚒️" "🛠️" "⚙️" "🔩" "⛓️" "📐" "📏" "✂️" "🗜️" "📌" "🔍" "💎"
+            "🎯" "🎪" "🏆" "🏅" "🎖️" "🔝" "📈" "💯" "🎳" "🎲" "🎱" "🧩" "♟️" "🎰"
+            "🚀" "✈️" "🛩️" "🛰️" "🌈" "🌊" "💨" "🌪️" "⚡️" "🔥" "💥" "🎢" "🎡" "🎪"
+            "💡" "💭" "💫" "🧠" "🎉" "🎊" "🌟" "💪" "📚" "🔬" "🧪" "🧬" "🔭" "⚗️"
+            "👽" "🤖" "👾" "🛸" "🌌" "🌠" "🚀" "💫" "✨" "🔮" "🎆" "🎇" "⭐️" "🌟"
+            "🏗️" "🏢" "🏭" "🏛️" "🏘️" "🏰" "🗼" "🗽" "🗿" "🎪" "🌉" "🌇" "🌆" "🌃"
+            "📡" "📱" "📟" "📠" "🔌" "🔋" "💻" "🖥️" "⌨️" "🖱️" "🖨️" "🖲️" "📼" "💽"
           )
           RANDOM_EMOJI=${EMOJIS[$RANDOM % ${#EMOJIS[@]}]}
 
           DATETIME=$(date '+%Y-%m-%d %H:%M:%S')
 
           DESCRIPTIONS=(
-            "Generated new robot avatar with unique characteristics"
-            "Created an innovative robot design with special features"
-            "Daily robot collection updated with fresh perspective"
-            "Added a distinctive mechanical companion to the gallery"
-            "Synthesized a new artificial intelligence visualization"
-            "Crafted a one-of-a-kind robotic entity"
-            "Introduced a new member to our robot family"
-            "Enhanced the collection with a modern robot design"
-            "Automated art generation completed successfully"
-            "New digital persona has been materialized"
-            "Expanded robot archive with latest creation"
-            "Designed and implemented new robot variation"
-            "Revolutionary robot concept brought to life"
-            "Artificial entity visualization completed"
-            "Generated unique mechanical character design"
-            "Advanced robot prototype visualization added"
-            "Innovative machine learning visualization created"
-            "Artistic interpretation of AI consciousness"
-            "Robotic expression system newly generated"
-            "Cutting-edge robot design implementation"
-            "Futuristic mechanical entity materialized"
-            "Next-generation robot concept realized"
-            "Dynamic robot personality generated"
-            "Artificial being visualization completed"
-            "Breakthrough in robot avatar design"
-            "Revolutionary mechanical form created"
-            "Advanced AI visualization system output"
-            "Experimental robot design materialized"
-            "State-of-the-art robot rendering complete"
-            "Innovative mechanical life form designed"
+            "任何足够先进的技术，都与魔法无异。——亚瑟·克拉克"
+            "预测未来的最好方式就是创造它。——艾伦·凯"
+            "创新就是把不同的事物联系起来。——史蒂夫·乔布斯"
+            "艺术的目标是洗去灵魂沾染的日常尘埃。——毕加索"
+            "我们塑造工具，然后工具塑造我们。——麦克卢汉"
+            "逻辑带你从A到B，想象力带你去任何地方。——爱因斯坦"
+            "科技的最高境界是让人感受不到科技的存在。——张小龙"
+            "每个伟大的设计都始于一个更佳的故事。——洛林·格莱德曼"
+            "机器应该工作，人类应该思考。——IBM创始理念"
+            "未来属于那些相信梦想之美的人。——埃莉诺·罗斯福"
+            "创造是允许自己犯错，艺术是知道保留哪些。——斯科特·亚当斯"
+            "数字革命远未结束，它才刚刚开始。——蒂姆·库克"
+            "科学是组织的知识，智慧是组织的生活。——康德"
+            "我们不是机器中齿轮，而是机器的创造者。——莱昂·巴蒂斯塔·阿尔伯蒂"
+            "真正的发现之旅不在于寻找新风景，而在于拥有新眼睛。——普鲁斯特"
+            "技术本身没有善恶，全看人类如何使用。——爱因斯坦"
+            "完美不在于无可增加，而在于无可删减。——圣埃克苏佩里"
+            "未来已经到来，只是分布不均。——威廉·吉布森"
+            "想象力比知识更重要。——爱因斯坦"
+            "每个创造最初都是打破常规的行为。——哈勃·马科斯"
+            "艺术不是复制可见，而是创造可见。——保罗·克利"
+            "我们不是继承父辈的世界，而是借用儿孙的世界。——印第安谚语"
+            "智能的标志不是知识，而是想象力。——爱因斯坦"
+            "设计不只是外观，设计是功能如何运作。——史蒂夫·乔布斯"
+            "科技的最高境界是模拟生命的优雅。——巴克敏斯特·富勒"
+            "创新需要两种品质：好奇心与勇气。——埃隆·马斯克"
+            "未来属于能将不可能变为可能的造梦者。——艾伦·凯"
+            "真正的艺术是让不可见成为可见。——保罗·克利"
+            "我们创造的每件物品都是自我肖像。——托马斯·莫顿"
+            "机器可以回答问题，但只有人类能提出问题。——列维特"
           )
           RANDOM_DESC=${DESCRIPTIONS[$RANDOM % ${#DESCRIPTIONS[@]}]}
 
@@ -106,8 +105,7 @@ jobs:
           echo "message=${MESSAGE}" >> $GITHUB_OUTPUT
 
       - name: "Run bash"
-        run: |
-          yarn writer
+        run: yarn writer
 
       - name: Setup SSH Key
         run: |
@@ -115,22 +113,24 @@ jobs:
           echo "${{ secrets.HEXO_DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
       - name: Setup Git Config
         run: |
-          git config --global user.name "qian"
-          git config --global user.email "xuqssq@163.com"
+          git config --global user.name "iosxx"
+          git config --global user.email "840263997@qq.com"
+
       - name: Install Hexo
         run: |
           yarn global add hexo-cli
           yarn add hexo-deployer-git
+
       - name: Deploy Hexo
-        run: |
-          hexo g -d -m "${{ steps.commit-message.outputs.message }}"
+        run: hexo g -d -m "${{ steps.commit-message.outputs.message }}"
 
       - name: "Commit and Push"
         run: |
-          git config --global user.email "xuqssq@163.com"
-          git config --global user.name "qian"
+          git config --global user.email "840263997@qq.com"
+          git config --global user.name "iosxx"
           git add source/*
           git commit -m "${{ steps.commit-message.outputs.message }}" || echo "No changes to commit"
           git push origin HEAD:${GITHUB_REF#refs/heads/}
