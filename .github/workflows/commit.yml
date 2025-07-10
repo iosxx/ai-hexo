@@ -44,33 +44,37 @@ jobs:
       - name: "Generate commit message"
         id: commit-message
         run: |
-          # 保持原有的随机消息生成逻辑
           echo "message=🤖 chore: Auto update [$(date '+%Y-%m-%d %H:%M:%S')]" >> $GITHUB_OUTPUT
 
       - name: "Run bash"
         run: yarn writer
-
-      - name: "Configure Git"
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n x-access-token:${{ secrets.ACCOUNT_TOKEN }} | base64)"
 
       - name: "Install Hexo"
         run: |
           yarn global add hexo-cli
           yarn add hexo-deployer-git
 
-      - name: "Build and Deploy Hexo"
+      - name: "Build Hexo"
         run: |
           hexo clean
           hexo generate
-          # 修改Hexo配置使用HTTPS+Token方式部署
-          sed -i 's/git@github.com:/https:\/\/${{ secrets.ACCOUNT_TOKEN }}@github.com\//' _config.yml
-          hexo deploy --message "${{ steps.commit-message.outputs.message }}"
+
+      - name: "Deploy to GitHub Pages"
+        run: |
+          cd ./public
+          git init
+          git config --global init.defaultBranch main
+          git config --global http.postBuffer 524288000
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "${{ steps.commit-message.outputs.message }}"
+          git push --force --quiet "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/iosxx/iosxx.github.io.git" main:main
 
       - name: "Commit and Push Source Changes"
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add source/*
           git commit -m "${{ steps.commit-message.outputs.message }}" || echo "No changes to commit"
-          git push origin HEAD:${GITHUB_REF#refs/heads/}
+          git push origin HEAD:${{ github.ref_name }}
